@@ -95,7 +95,7 @@ else
     exit 1
   fi
   # Copy rules to .cursor/rules
-  for f in "$TMPDIR"/*.mdc; do
+  for f in "$TMPDIR"/rules/*.mdc; do
     cp "$f" "$RULES_DIR/" || { err "Failed to copy $f"; rm -rf "$TMPDIR"; exit 1; }
   done
   rm -rf "$TMPDIR"
