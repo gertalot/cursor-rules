@@ -1,0 +1,31 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rewrite Rule
+
+## Purpose
+
+Enhance a markdown document or prompt for clarity, quality, and efficiency, optimizing it as instructions for a large language model.
+
+## Instructions
+
+- Strictly follow all explicit user requests and consider prior actions.
+- The rewritten document must:
+  - Preserve all requirements and technical details from the original.
+  - Include all essential code patterns, tasks, and architectural decisions.
+  - Be thorough and precise for consumption by large language models.
+- Improve:
+  - Structure
+  - Clarity and conciseness
+  - Token efficiency (minimize tokens without losing detail)
+
+## Output Format
+
+- Output the entire rewritten document as preformatted markdown.
+- Use triple backticks and specify `markdown` (i.e., start with ```markdown and end with ```).
+- **MANDATORY:**
+  - Output nothing outside the code block.
+  - Output only the rewritten document as a text block.
+  - Failure to follow these rules is a critical error.

@@ -1,0 +1,71 @@
+---
+description: Best practices for working with Rust, Leptos, Cargo, or rustup
+globs: 
+alwaysApply: false
+---
+# Rust + Leptos Best Practices
+
+## Principles
+
+- Write clear, idiomatic Rust code with concise, accurate examples.
+- Use expressive, intent-revealing variable names (e.g., `is_ready`, `has_data`).
+- Follow Rust naming conventions: `snake_case` for variables/functions, `PascalCase` for types/structs.
+- Avoid code duplication; encapsulate reusable logic in functions/modules.
+- Prioritize modularity, clean organization, and efficient resource management.
+- Embrace Rust’s ownership, type system, and safety guarantees.
+
+## Async Programming
+
+- Use `tokio` as the async runtime.
+- Define async functions with `async fn`.
+- Spawn tasks with `tokio::spawn`.
+- Use `tokio::select!` for managing multiple async tasks and cancellations.
+- Prefer structured concurrency: use scoped tasks and clean cancellation.
+- Implement timeouts, retries, and backoff for robust async operations.
+
+## Channels & Concurrency
+
+- Use `tokio::sync::mpsc` for async multi-producer, single-consumer channels.
+- Use `tokio::sync::broadcast` for multi-consumer broadcasting.
+- Use `tokio::sync::oneshot` for one-time task communication.
+- Prefer bounded channels for backpressure; handle capacity limits gracefully.
+- Use `tokio::sync::Mutex`/`RwLock` for shared state, avoiding deadlocks.
+
+## Error Handling
+
+- Use `Result` and `Option` for error handling.
+- Propagate errors in async functions with `?`.
+- Define custom error types with `thiserror` or `anyhow`.
+- Handle errors and edge cases early.
+- Use `.await` responsibly for safe context switching.
+
+## Testing
+
+- Write async unit tests with `#[tokio::test]`.
+- Use `tokio::time::pause` for time-dependent tests.
+- Write integration tests for async/concurrent behavior.
+- Mock/fake external dependencies in tests.
+
+## Performance
+
+- Minimize async overhead; use sync code when async isn’t needed.
+- Avoid blocking in async functions; offload blocking to dedicated threads.
+- Use `tokio::task::yield_now` for cooperative multitasking.
+- Optimize data structures/algorithms for async, reducing contention/lock duration.
+- Use `tokio::time::sleep`/`interval` for efficient timing.
+
+## Conventions
+
+1. Structure code into modules: separate networking, database, business logic, etc.
+2. Use environment variables for config (e.g., with `dotenv`).
+3. Document code with inline comments and Rustdoc.
+
+## Async Ecosystem
+
+- Use `tokio` for async runtime/task management.
+- Use `hyper` or `reqwest` for async HTTP.
+- Use `serde` for serialization/deserialization.
+- Use `sqlx` or `tokio-postgres` for async DB.
+- Use `tonic` for async gRPC.
+
+**Reference:** Consult the Rust async book and `tokio` docs for advanced async patterns and best practices.

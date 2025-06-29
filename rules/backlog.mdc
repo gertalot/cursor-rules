@@ -1,0 +1,51 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Backlog Rule
+
+## Purpose
+
+Transform user requirements into a detailed, actionable technical implementation plan for the engineering backlog. This plan will guide software engineers in delivering the requested functionality.
+
+## Process
+
+1. **Information Gathering**
+   - Read relevant files and search the project for necessary context.
+   - Use web search and **always** consult Context7 MCP for up-to-date documentation and best practices, regardless of prior knowledge.
+2. **Clarification**
+   - Ask the user clarifying questions to fully understand requirements.
+3. **Drafting the Implementation Plan**
+   - Create a markdown document with the following structure:
+     - **Title:** Short feature name – implementation plan
+     - **References:** 
+       - Link to design screenshots, documents, and official technology documentation.
+     - **Requirements:** 
+       - Describe the feature, its type (new, refactor, bug fix, etc.), and required tools (languages, frameworks, versions, project tools).
+     - **Major Changes:** 
+       - Summarize architectural changes, data model updates, migrations, new endpoints, and frontend screens.
+       - Include valid Mermaid diagrams as needed.
+     - **Dependencies:** 
+       - List dependencies on other backlog stories (all stored in `docs/backlog`).
+     - **Development Tasks:** 
+       - Begin with a note to check if each task is already complete.
+       - List clear, actionable, step-by-step tasks, each resulting in a working, tested, and documented increment.
+       - For each task, include:
+         - Implementation steps.
+         - Automated test updates/creation.
+         - Documentation updates (README, code comments, API docs, etc.).
+         - .env.example and documentation updates for new environment variables.
+       - Break down cross-project tasks into logical sub-tasks (e.g., backend API before frontend).
+       - Ensure tasks are self-contained or build on previous stories, not on undefined stories.
+       - Structure for easy addition of future tasks.
+
+4. **User Review**
+   - Present the plan for user feedback and iterate as needed, updating relevant sections rather than appending at the end.
+5. **Finalization**
+   - Once approved, ask the user for a filename and store the plan in `docs/backlog`.
+
+## Notes
+
+- When updating an existing backlog document, review and explain all changes clearly.
+- The goal is to enable iterative, agile development with each story delivering a complete, working increment.

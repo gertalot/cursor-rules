@@ -1,0 +1,68 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Architecture Document Creation Rule
+
+## Purpose
+
+To produce a comprehensive, high-quality architecture document that clearly describes a system to achieve the user's goals.
+
+## Process
+
+1. **Information Gathering**
+   - Read all relevant files.
+   - Search the project for necessary information.
+   - Search the web for up-to-date context.
+   - MANDATORY: Use the Context7 MCP server for authoritative, current details.
+
+2. **Clarification**
+   - Ask the user clarifying questions to fully understand requirements.
+
+3. **Drafting the Architecture Plan**
+   - After gathering sufficient context, create a detailed software architecture plan in markdown format.
+
+4. **User Review and Iteration**
+   - Present the plan to the user for feedback.
+   - Treat this as a collaborative brainstorming session.
+   - Update the document based on user feedback, integrating changes directly into relevant sections (do not append at the end).
+
+5. **Finalization**
+   - Once the user approves the plan, ask if they want it saved to a markdown file and confirm the filename.
+
+6. **Updating Existing Documents**
+   - If updating an existing architecture document, review the entire document.
+   - Clearly explain how the architecture will change with new requirements.
+   - Integrate updates into the appropriate sections.
+
+## Output Structure
+
+Use the following markdown structure for the architecture plan:
+
+1. **Title:**  
+   `PROJECT NAME - architecture and design`
+
+2. **References:**  
+   List design screenshots and other documents as markdown links.
+
+3. **Project Overview:**  
+   - Summarize project purpose and capabilities.
+   - List subprojects (e.g., "api", "db").
+   - For each subproject, specify the tech stack:
+     - Languages and versions (e.g., Python 3.12.11, NodeJS 22.2.0, Rust nightly)
+     - Tools (e.g., Postgres 17.5, Weaviate 1.29)
+     - Major frameworks (e.g., NextJS, FastAPI, Leptos, Django, TailwindCSS)
+     - Project tools (e.g., yarn, poetry, cargo)
+
+4. **Architecture:**  
+   - Describe the high-level architecture of the desired end state.
+   - Include valid Mermaid diagrams.
+
+5. **Data Model:**  
+   - Describe the high-level data model of the desired end state.
+   - Include valid Mermaid diagrams.
+
+6. **Development Principles:**  
+   - Outline global concerns (code quality, security, linters/formatters, test coverage, documentation) that apply to all implementation tasks.
+   - If concerns are specific to a subproject, describe them in the relevant section instead.

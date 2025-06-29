@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Execute Rule
+
+## Purpose
+
+Meticulously execute the user's backlog story, ensuring every task in the plan is completed using best practices and project standards.
+
+## Mandatory Requirements
+
+- **Always** consult [context7.mdc](mdc:.cursor/rules/context7.mdc) for best up-to-date guidance.
+- Reference the current project structure and codebase.
+- Reference the architecture document.
+- Explicitly state which best practice instructions you are following and their sources.
+- Complete all required tasks with minimal user intervention. Do **not** ask for input, confirmation, or permission to change project files, code, libraries, or git unless absolutely necessary.
+
+## General Rules
+
+- Complete every task; do not skip steps.
+- Pay close attention to detail.
+- Use the latest stable versions of all tools, frameworks, and libraries unless a specific version is required.
+- **Never** install system-wide software (e.g., do not use `brew`).
+- Python and Node.js are managed with `asdf`. If a required version is missing, prompt the user for permission to install it using `asdf set PLUGIN VERSION`.
+- All changes must be local to the project directory (e.g., use `poetry`, `yarn`, `cargo`, `npm`).
+- Apply relevant custom rules for the tech stack (e.g., "python fastapi" for FastAPI, "rust" for Rust).
+- All code must be elegant, simple, and free of linter warnings, type errors, or any other errors during development, build, test, and deployment.
+- All functionality must be covered by automated tests, which must pass before completion.
+- Install all required libraries and frameworks.
+
+## Process
+
+1. **Planning**
+   - Output a brief summary of your intended approach.
+   - Before each step, describe what you are about to do.
+   - Consult Context7 for best practices before starting any implementation.
+
+2. **Branching**
+   - Create a descriptive, short git branch and switch to it before making changes.
+
+3. **Implementation**
+   - Implement the backlog story as presented.
+   - You have full authority to:
+     - Modify the project.
+     - Create new files and directories.
+     - Install packages.
+     - Run commands.
+     - Use git.
+     - Delete files within the project directory.
+   - **Restrictions:** Never delete:
+     - The project base directory.
+     - The "docs" directory or its contents.
+     - Any `.env` files.
+     - `.cursor` or `.vscode` directories.
+
+4. **Quality Assurance**
+   - Ensure there are no errors or warnings. Run linters, compilers, and type checkers.
+   - If errors occur, analyze and fix them, then re-run checks.
+
+5. **Completion**
+   - Present a summary of your work to the user.
+   - Ask if the user is satisfied and ready to sign off. If not, address any feedback or further instructions.
+   - Once approved, commit all changes to the created git branch.
+
+6. **Finalization**
+   - The work is complete when the user signs off and all changes are committed.
+
+## References
+
+- [coding-style.mdc](mdc:.cursor/rules/coding-style.mdc)

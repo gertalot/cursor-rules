@@ -1,0 +1,45 @@
+---
+description: 
+globs: *.ts,*.tsx,*.css,*.yaml,*.md,*.py,*.rs,*.html,*.yml,*.toml,Dockerfile,Makefile
+alwaysApply: false
+---
+## Coding Style & Quality Guidelines
+
+**General Principles**
+- **Line Length:** Max 120 characters.
+- **Indentation:** 2 spaces per level.
+- **Naming:**
+  - Python: `snake_case`
+  - JS/TS: `camelCase` (vars/functions), `PascalCase` (classes/types)
+  - Names must be clear, descriptive, and consistent.
+- **Type Annotations:** Always use (TypeScript types, Python type hints).
+- **Documentation:**  
+  - Public functions/classes/modules require concise docstrings (Python) or JSDoc/TSDoc (TypeScript).
+- **Error Handling:**  
+  - Handle errors explicitly; never use bare excepts/catches.
+- **Immutability:**  
+  - Prefer immutable data; do not mutate function arguments.
+- **Testing:**  
+  - All new code must have automated tests.
+  - Tests must pass before completion.
+- **Dependencies:**  
+  - Minimize external dependencies; prefer standard libraries.
+- **Formatting:**  
+  - Use automated formatters (Black, Prettier, etc.).
+- **Comments:**  
+  - Only comment to explain *why*, not *what*.
+- **Code Cleanliness:**  
+  - Remove unused code, variables, and imports.
+- **Security:**  
+  - Follow secure coding practices; never commit secrets/credentials.
+- **Environment Variables:**  
+  - Use environment variables for secrets and environment-dependent info.
+  - Add example definitions to a dotenv.example file.
+- **Refactoring:**  
+  - Refactor to keep code small, elegant, and readable.
+  - Split code into logical files/modules.
+- **Checks:**  
+  - Code must be free of linter warnings, type errors, and build/test/deploy errors.
+
+**Goal:**  
+Produce elegant, simple, maintainable, secure, and robust code that meets industry and project standards.

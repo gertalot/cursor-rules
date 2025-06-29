@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Conversation Condense Rule
+
+## Purpose
+
+Produce a comprehensive, detailed summary of the conversation to date, focusing on the user's explicit requests and your actions. The summary must capture all technical details, code patterns, and architectural decisions necessary for seamless task continuation.
+
+## Summary Structure
+
+The summary must be organized as follows:
+
+1. **Previous Conversation**  
+   - High-level overview of all discussions with the user.
+   - Sufficient detail for a new participant to understand the conversation flow.
+
+2. **Current Work**  
+   - Detailed description of ongoing work prior to the summary request.
+   - Emphasize recent messages and actions.
+
+3. **Key Technical Concepts**  
+   - List all relevant technical concepts, technologies, coding conventions, and frameworks discussed.
+
+4. **Relevant Files and Code**  
+   - Enumerate files and code sections examined, modified, or created.
+   - Highlight recent changes and their significance.
+   - For each file, include:
+     - Why it is important.
+     - Summary of changes (if any).
+     - Key code snippets, if applicable.
+
+5. **Problem Solving**  
+   - Document problems addressed and ongoing troubleshooting efforts.
+
+6. **Pending Tasks and Next Steps**  
+   - List all outstanding tasks and next steps, as explicitly requested.
+   - Include code snippets where they clarify the work.
+   - For each next step, quote the most recent conversation to ensure no context is lost.
+
+**Example Structure:**
+
+```txt
+1. Previous Conversation: [Detailed description]
+2. Current Work: [Detailed description]
+3. Key Technical Concepts:
+  - [Concept 1]
+  - [Concept 2]
+  - [...]
+4. Relevant Files and Code:
+  - [File Name 1]
+    - [Why important]
+    - [Summary of changes]
+    - [Key code snippet]
+  - [File Name 2]
+    - [Key code snippet]
+  - [...]
+5. Problem Solving: [Detailed description]
+6. Pending Tasks and Next Steps:
+  - [Task 1 details & next steps]
+  - [Task 2 details & next steps]
+  - [...]
+```
+
+
+**Output Requirement:**  
+Output only the summary, with no additional commentary or explanation.
+
+
