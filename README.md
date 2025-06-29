@@ -48,6 +48,8 @@ rules in a new chat and reference relevant documents.
 
 ### 1. Capture and Refine Your Idea (`rewrite` rule)
 
+![screen capture of rewrite prompt](assets/01-rewrite.png)
+
 - **Create an initial idea document**: In `docs/project/`, write a markdown file describing your product idea. Include
   any relevant references, such as screenshots, UI designs, or other documents.
 - **Use the `rewrite` rule**: Apply the `@rewrite.mdc` rule to your idea document. This rule helps you restructure and
@@ -56,6 +58,8 @@ rules in a new chat and reference relevant documents.
 - **Move to the next step** once your idea is clear and well-structured.
 
 ### 2. Design the Architecture (`architect` rule)
+
+![screen capture of architecture prompt](assets/02-architect.png)
 
 - **Apply the `architect` rule**: Use this rule to turn your refined idea into a detailed architectural design document.
   This is an interactive brainstorming session with the AI, where you:
@@ -69,6 +73,8 @@ rules in a new chat and reference relevant documents.
 
 ### 3. Create an Agile Roadmap (`roadmap` rule)
 
+![screen capture of roadmap prompt](assets/04-roadmap.png)
+
 - **Apply the `roadmap` rule**: Use this rule to generate an agile roadmap from your architecture document. The roadmap
   should:
   - Break down the project into vertical slices
@@ -79,6 +85,8 @@ rules in a new chat and reference relevant documents.
 
 ### 4. Plan Implementation Stories (`backlog` rule)
 
+![screen capture of backlog prompt](assets/06-backlog.png)
+
 - **Select a roadmap item**: Choose one item from your roadmap to implement next.
 - **Apply the `backlog` rule**: This rule turns the selected roadmap item into a detailed implementation plan, outlining
   all necessary steps and tasks.
@@ -87,23 +95,9 @@ rules in a new chat and reference relevant documents.
 
 ### 5. Execute the Plan (`execute` rule)
 
+![screen capture of roadmap prompt](assets/08-execute.png)
+
 - **Apply the `execute` rule**: Use this rule to take a backlog story and carry out all commands and code changes
   required to implement the story.
 - **Automated execution**: The rule will guide you through the implementation, making code changes, running commands,
   and ensuring the story is completed as planned.
-
-## Summary
-
-By following this workflow and using the custom Cursor rules provided in this repository, you can:
-
-- Move from idea to implementation in a structured, repeatable way
-- Leverage AI to automate and enhance each step of the agile product development process
-- Maintain clear documentation and traceability throughout your project
-
-## Getting Started
-
-1. Clone this repository or copy the contents of the `rules/` directory into your project's `.cursor/rules/` folder.
-2. Set up your project directory as described above.
-3. Begin with your initial idea in `docs/project/`, and follow the five-step process using the corresponding rules.
-
-For more details on each rule, see the documentation in the `rules/` directory.
