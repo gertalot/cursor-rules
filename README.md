@@ -47,11 +47,11 @@ The following diagram illustrates the overall workflow:
 
 ```mermaid
 flowchart TD
-    A["Product Idea Document (contains basic specs)"] -->|"rewrite"| B["Refined Product Idea (better basic specs!)"]
-    B -->|"architect"| C["Architecture Document (full blown architecture with diagrams and all)"]
-    C -->|"roadmap"| D["Agile Roadmap (high level agile roadmap)"]
-    D -->|"backlog (for each roadmap item)"| E["Implementation Plan (with plenty of technical detail)"]
-    E -->|"execute"| F["Working Product (yolo!)"]
+    A["Product Idea Document (contains basic specs)"] -->|"@rewrite.mdc"| B["Refined Product Idea (better basic specs!)"]
+    B -->|"@architect.mdc"| C["Architecture Document (full blown architecture with diagrams and all)"]
+    C -->|"@roadmap.mdc"| D["Agile Roadmap (high level agile roadmap)"]
+    D -->|"@backlog.mdc (for each roadmap item)"| E["Implementation Plan (with plenty of technical detail)"]
+    E -->|"@execute.mdc"| F["Working Product (yolo!)"]
 ```
 
 The workflow consists of five main steps, each supported by a specific rule. Here's how to use them. Use each of these
