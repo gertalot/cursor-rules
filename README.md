@@ -4,6 +4,15 @@ This repository contains a set of custom Cursor rules designed to automate and s
 workflow. By following these rules, you can efficiently move from an initial idea to a fully implemented product using a
 structured, AI-assisted process.
 
+## TL;DR
+
+This installs the custom rules in your current directory's `.cursor/rules` directory. It won't do anything if that
+directory already exists.
+
+```sh
+curl -sSL https://raw.githubusercontent.com/gertalot/cursor-rules/main/init.sh | sh
+```
+
 ## Project Structure
 
 To get started, create a new project directory with the following structure:
