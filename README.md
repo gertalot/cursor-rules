@@ -51,7 +51,8 @@ rules in a new chat and reference relevant documents.
 ![screen capture of rewrite prompt](assets/01-rewrite.png)
 
 - **Create an initial idea document**: In `docs/project/`, write a markdown file describing your product idea. Include
-  any relevant references, such as screenshots, UI designs, or other documents.
+  any relevant references, such as screenshots, UI designs, or other documents. See
+  [this starting point](example-starting-point.md) for an example.
 - **Use the `rewrite` rule**: Apply the `@rewrite.mdc` rule to your idea document. This rule helps you restructure and
   clarify your idea, making it more actionable and easier to understand. You can iterate with the AI, refining the
   document until you're satisfied.
