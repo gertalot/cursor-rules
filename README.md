@@ -4,7 +4,13 @@ This repository contains a set of custom Cursor rules designed to automate and s
 workflow. By following these rules, you can efficiently move from an initial idea to a fully implemented product using a
 structured, AI-assisted process.
 
-## TL;DR
+## PREREQUISITES
+
+- [Cursor](https://www.cursor.com/)
+- [Context7 MCP Server](https://github.com/upstash/context7)
+- a POSIX called `sh` on your PATH (if you want to run the install script)
+
+## INSTALLATION
 
 This installs the custom rules in your current directory's `.cursor/rules` directory. It won't do anything if that
 directory already exists.
@@ -13,9 +19,13 @@ directory already exists.
 curl -sSL https://raw.githubusercontent.com/gertalot/cursor-rules/main/init.sh | sh
 ```
 
+### Manual installation
+
+If you can't or don't want to run the script, just copy the files from the "rules" directory to your `.cursor/rules`.
+
 ## Project Structure
 
-To get started, create a new project directory with the following structure:
+To get started, run the install script as shown above. This creates the following structure in your current directory:
 
 ```txt
 my_project
@@ -27,19 +37,20 @@ my_project
     +- backlog
 ```
 
-- **.cursor/rules/**: Place all the rule files from this repository here.
+- **.cursor/rules/**:  All the custom Cursor rule files from this repository.
 - **docs/project/**: Contains project-level documentation (idea, architecture, roadmap, etc.).
 - **docs/backlog/**: Contains detailed implementation plans (stories) for each roadmap item.
 
 ## Workflow Overview
 
-The workflow consists of five main steps, each supported by a specific rule. Here's how to use them:
+The workflow consists of five main steps, each supported by a specific rule. Here's how to use them. Use each of these
+rules in a new chat and reference relevant documents.
 
 ### 1. Capture and Refine Your Idea (`rewrite` rule)
 
 - **Create an initial idea document**: In `docs/project/`, write a markdown file describing your product idea. Include
   any relevant references, such as screenshots, UI designs, or other documents.
-- **Use the `rewrite` rule**: Apply the `rewrite` rule to your idea document. This rule helps you restructure and
+- **Use the `rewrite` rule**: Apply the `@rewrite.mdc` rule to your idea document. This rule helps you restructure and
   clarify your idea, making it more actionable and easier to understand. You can iterate with the AI, refining the
   document until you're satisfied.
 - **Move to the next step** once your idea is clear and well-structured.
