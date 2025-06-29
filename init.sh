@@ -44,6 +44,12 @@ if [ -d "$DOCS_BACKLOG" ]; then
   exit 1
 fi
 
+# Check for existing RULES_HOWTO.md
+if [ -f "RULES_HOWTO.md" ]; then
+  err "RULES_HOWTO.md already exists. Aborting to avoid overwrite."
+  exit 1
+fi
+
 # Create directories
 mkdir -p "$RULES_DIR" "$DOCS_PROJECT" "$DOCS_BACKLOG"
 
