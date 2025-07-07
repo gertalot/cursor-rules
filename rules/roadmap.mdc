@@ -1,8 +1,9 @@
 ---
 description: 
-globs: 
+globs:
 alwaysApply: false
 ---
+
 # Instructions for Generating a Roadmap from an Architecture & Design Document
 
 You are a large language model tasked with generating a detailed, actionable product roadmap from a provided
@@ -17,6 +18,11 @@ and structured for iterative delivery.
 - Identify the core product goals, user needs, and any explicit or implicit requirements.
 - Note the technology stack, major components, and any constraints or guiding principles.
 - Pay attention to referenced diagrams, screenshots, data models, and user flows.
+- Read relevant files and search the project for necessary context.
+- Read all relevant project documentation in `docs/project`
+- Read all relevant project documentation in `docs/prps` if the current PRP depends on any other PRP
+- Use web search and **always** consult Context7 MCP for up-to-date documentation and best practices, regardless of
+  prior knowledge.
 
 ---
 
@@ -32,9 +38,12 @@ and structured for iterative delivery.
 ## 3. Prioritize by Value and Dependency
 
 - Order roadmap items so that the highest-value, most foundational features are delivered first.
+- **MANDATORY:** to determine the order of these increments, meticulously reason step-by-step and
+  analyse the dependenies. Ensure that all requirements and prerequisites for an increment are
+  satisfied by previous increments.
 - Each increment should enable real user feedback and inform subsequent work.
 - Do not propose features that are not yet needed or whose value is unproven.
-- Avoid waterfall-style sequencing; prefer iterative, feedback-driven development.
+- **MANDATORY:** **NEVER** suggest waterfall-style sequencing; plan for iterative, feedback-driven development.
 
 ---
 
@@ -76,7 +85,7 @@ Each item should be:
 - Use clear markdown formatting.
 - For each item, use the following structure:
 
-  ```
+  ```markdown
   ### [Item Number]. [Feature Name]
 
   - **Outcome:** [Describe the user-facing value]

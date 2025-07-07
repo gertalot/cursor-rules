@@ -28,7 +28,7 @@ fi
 # Set up target directories
 RULES_DIR=".cursor/rules"
 DOCS_PROJECT="docs/project"
-DOCS_BACKLOG="docs/backlog"
+DOCS_PRPS="docs/prps"
 
 # Check for existing directories
 if [ -d "$RULES_DIR" ]; then
@@ -39,8 +39,8 @@ if [ -d "$DOCS_PROJECT" ]; then
   err "docs/project already exists. Aborting to avoid overwrite."
   exit 1
 fi
-if [ -d "$DOCS_BACKLOG" ]; then
-  err "docs/backlog already exists. Aborting to avoid overwrite."
+if [ -d "$DOCS_PRPS" ]; then
+  err "docs/prps already exists. Aborting to avoid overwrite."
   exit 1
 fi
 
@@ -51,7 +51,7 @@ if [ -f "RULES_HOWTO.md" ]; then
 fi
 
 # Create directories
-mkdir -p "$RULES_DIR" "$DOCS_PROJECT" "$DOCS_BACKLOG"
+mkdir -p "$RULES_DIR" "$DOCS_PROJECT" "$DOCS_PRPS"
 
 GITHUB_REPO="gertalot/cursor-rules"
 RELEASE_URL="https://github.com/$GITHUB_REPO/releases/latest/download/cursor-rules.tar.gz"

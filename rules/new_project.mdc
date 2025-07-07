@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Initialise a new project
+
+## Create a new project structure in the current directory
+
+Execute the following file structure exists in the project root directory.
+Create these files and directories if they don't already exist:
+
+```txt
+docs/
+  +- project/
+      +- PROJECT.md
+      +- TASKS.md
+  +- PRPs/
+```

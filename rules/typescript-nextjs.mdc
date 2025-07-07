@@ -1,6 +1,6 @@
 ---
 description: Best practices for working with Typescript, Node, NextJS, App Router, React, Shadcn,  Tailwind, or Framer Motion
-globs: 
+globs: *.ts, *.js, *.jsx, *.tsx, *.css
 alwaysApply: false
 ---
 # TypeScript + Next.js Best Practices
@@ -92,7 +92,8 @@ alwaysApply: false
 
 - Place both `/app` and `/components` under `/src` for clarity and modularity.
 - Example:
-  ```
+
+  ```text
   /src
     /app
     /components
@@ -107,6 +108,7 @@ alwaysApply: false
         /Navbar
         /Footer
   ```
+
 - Organize components by type (e.g., forms, buttons, layout) or by feature for larger apps.
 - For private components used only within specific pages, use a `_components` folder within the relevant `/app` subdirectory.
 - Shared components go in `/src/components` for reuse across pages/features.

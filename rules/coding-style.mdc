@@ -3,43 +3,48 @@ description:
 globs: *.ts,*.tsx,*.css,*.yaml,*.md,*.py,*.rs,*.html,*.yml,*.toml,Dockerfile,Makefile
 alwaysApply: false
 ---
-## Coding Style & Quality Guidelines
+# Coding Style & Quality Guidelines
 
-**General Principles**
-- **Line Length:** Max 120 characters.
-- **Indentation:** 2 spaces per level.
-- **Naming:**
-  - Python: `snake_case`
-  - JS/TS: `camelCase` (vars/functions), `PascalCase` (classes/types)
-  - Names must be clear, descriptive, and consistent.
-- **Type Annotations:** Always use (TypeScript types, Python type hints).
-- **Documentation:**  
-  - Public functions/classes/modules require concise docstrings (Python) or JSDoc/TSDoc (TypeScript).
-- **Error Handling:**  
-  - Handle errors explicitly; never use bare excepts/catches.
-- **Immutability:**  
-  - Prefer immutable data; do not mutate function arguments.
-- **Testing:**  
-  - All new code must have automated tests.
-  - Tests must pass before completion.
-- **Dependencies:**  
-  - Minimize external dependencies; prefer standard libraries.
-- **Formatting:**  
-  - Use automated formatters (Black, Prettier, etc.).
-- **Comments:**  
-  - Only comment to explain *why*, not *what*.
-- **Code Cleanliness:**  
-  - Remove unused code, variables, and imports.
-- **Security:**  
-  - Follow secure coding practices; never commit secrets/credentials.
-- **Environment Variables:**  
-  - Use environment variables for secrets and environment-dependent info.
-  - Add example definitions to a dotenv.example file.
-- **Refactoring:**  
-  - Refactor to keep code small, elegant, and readable.
-  - Split code into logical files/modules.
-- **Checks:**  
-  - Code must be free of linter warnings, type errors, and build/test/deploy errors.
+- **Structure:** Organize code by feature/responsibility; use best practice
+- **Simplicity:** Write clear, simple code; avoid unnecessary complexity.
+- **Line Length:** Max 120 chars
+- **Indentation:** 2 spaces
+- **Type Annotations:** Always use (TypeScript, Python)
+- **Docs:**
+  - Public functions/classes/modules: concise docstrings (Python) or JSDoc/TSDoc (TS)
+- **Error Handling:**
+  - Handle errors explicitly; never use bare except/catch
+- **Immutability:**
+  - Prefer immutable data; do not mutate function args
+- **Testing:**
+  - All new code must have automated tests
+  - Tests must pass before completion
+  - Update tests after logic changes.
+  - Each feature requires at a minimum:
+    - 1 expected use test
+    - 1 edge case test
+    - 1 failure case test
+- **Dependencies:**
+  - Minimize external deps
+  - Prefer standard library or well-known and widely used libraries
+  - Use relative imports within packages.
+- **Formatting and Linting:**
+  - Use auto-formatters (Ruff, Prettier, Clippy, ESLint, etc.)
+- **Comments:**
+  - Only explain *why*, not *what*
+- **Cleanliness:**
+  - Remove unused code, vars, imports
+- **Security:**
+  - Follow secure coding; never commit secrets/credentials
+- **Configuration:**
+  - Load secrets, URLs, hostnames from environment variables, `.env`, or `.env.local`.
+  - Add examples to dotenv.example
+- **Refactoring:**
+  - Keep code small, elegant, readable
+  - Split into logical files/modules
+  - Max file size: 500 lines. Refactor if needed.
+- **Checks:**
+  - Fix all linter/type/build/test/deploy errors
 
-**Goal:**  
-Produce elegant, simple, maintainable, secure, and robust code that meets industry and project standards.
+**Goal:**
+Elegant, simple, maintainable, secure, robust code meeting project/industry standards.

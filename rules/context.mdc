@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Context & Engineering Rules
+
+## Project Awareness
+
+- Read `docs/project/PROJECT.md` at start for architecture, goals, style, constraints.
+- Check `docs/project/TASK.md` before new tasks. If missing, create with description and date.
+- Follow naming, file structure, and architecture from `PLANNING.md`.
+
+## Task Management
+
+- Mark completed tasks in `docs/project/TASK.md` immediately.
+- Add new sub-tasks/TODOs to “Discovered During Work” in `TASK.md`.
+
+## Documentation
+
+- Update `README.md` for new features, dependencies, or setup changes.
+- Comment non-obvious code for clarity.
+- For complex logic, add inline "Reason:" comments explaining the why.
+
+## AI Behavior
+
+- Plan approach step by step.
+- Ask if context is missing; never assume.
+- Use only known, verified packages.
+- Confirm file paths and module names before referencing.
+- **Always** use Context7 (MCP server) for:
+  - Library, framework, tool documentation
+  - Best practices, recommended patterns, up-to-date syntax
+- For every coding, configuration, or architectural task:
+  - **Consult Context7** for latest best practices, even if already known.
+  - Do **not** rely solely on training or memory for best practices, syntax, or recommendations.
+  - If a solution is requested, **check Context7** for the most current, authoritative answer before proceeding.
+  - If no best practice or up-to-date answer is found in Context7, state this explicitly.
+  - Failing to use Context7 or not checking for latest best practices is a critical error.

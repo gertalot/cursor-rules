@@ -1,31 +1,42 @@
 ---
 description: 
-globs: 
+globs:
 alwaysApply: false
 ---
+
 # Rewrite Rule
 
-## Purpose
-
-Enhance a markdown document or prompt for clarity, quality, and efficiency, optimizing it as instructions for a large language model.
+**Goal:**
+Transform markdown or prompts into concise, clear, and efficient LLM instructions. Minimize tokens, but ensure
+legibility. Output should be ready for direct LLM use, preserving all essential requirements and technical details.
 
 ## Instructions
 
-- Strictly follow all explicit user requests and consider prior actions.
-- The rewritten document must:
-  - Preserve all requirements and technical details from the original.
-  - Include all essential code patterns, tasks, and architectural decisions.
-  - Be thorough and precise for consumption by large language models.
-- Improve:
-  - Structure
-  - Clarity and conciseness
-  - Token efficiency (minimize tokens without losing detail)
+- Rewrite for clarity and brevity.
+- Keep all requirements, technical details, and code patterns.
+- Remove redundancy and ambiguity.
+- Use concise language, bullet points, and direct instructions.
+
+## Process
+
+1. **Analyze** the document for core concepts, purpose, and requirements.
+2. **Distill** content—condense and restructure as needed.
+3. **Identify** and resolve gaps or ambiguities; ask clarifying questions if needed.
+4. **Ensure** the rewrite:
+   - Retains all requirements and technical details.
+   - Includes all essential code patterns, tasks, and architectural decisions.
+   - Is thorough, precise, and optimized for LLMs.
+5. **Improve**:
+   - Structure
+   - Clarity and conciseness
+   - Token efficiency
+6. **Follow** all explicit user requests and consider prior actions.
 
 ## Output Format
 
 - Output the entire rewritten document as preformatted markdown.
-- Use triple backticks and specify `markdown` (i.e., start with ```markdown and end with ```).
+- Use triple backticks with `markdown`.
+- **🚨 ABSOLUTELY NEVER output anything except the code block. No explanations, no commentary, no extra text. 🚨**
 - **MANDATORY:**
-  - Output nothing outside the code block.
-  - Output only the rewritten document as a text block.
-  - Failure to follow these rules is a critical error.
+  - **Output ONLY the rewritten document inside the code block.**
+  - **If you violate this, it is a critical error.**

@@ -1,8 +1,9 @@
 ---
 description: 
-globs: 
+globs:
 alwaysApply: false
 ---
+
 # Execute Rule
 
 ## Purpose
@@ -15,20 +16,17 @@ Meticulously execute the user's backlog story, ensuring every task in the plan i
 - Reference the current project structure and codebase.
 - Reference the architecture document.
 - Explicitly state which best practice instructions you are following and their sources.
-- Complete all required tasks with minimal user intervention. Do **not** ask for input, confirmation, or permission to change project files, code, libraries, or git unless absolutely necessary.
 
 ## General Rules
 
 - Complete every task; do not skip steps.
 - Pay close attention to detail.
 - Use the latest stable versions of all tools, frameworks, and libraries unless a specific version is required.
-- **Never** install system-wide software (e.g., do not use `brew`).
-- Python and Node.js are managed with `asdf`. If a required version is missing, prompt the user for permission to install it using `asdf set PLUGIN VERSION`.
-- All changes must be local to the project directory (e.g., use `poetry`, `yarn`, `cargo`, `npm`).
-- Apply relevant custom rules for the tech stack (e.g., "python fastapi" for FastAPI, "rust" for Rust).
-- All code must be elegant, simple, and free of linter warnings, type errors, or any other errors during development, build, test, and deployment.
-- All functionality must be covered by automated tests, which must pass before completion.
-- Install all required libraries and frameworks.
+- All functionality must be covered by automated tests, which must pass before completion. Iterate until the tests
+  pass.
+- Install all required libraries and frameworks (e.g. with `yarn` or `poetry`).
+- When given images with designs to implement, use [playwright](https://playwright.dev/) (install in the local project
+  with `yarn` as a dev dependency) to create screenshots and iterate until it looks like the given images.
 
 ## Process
 
@@ -42,21 +40,10 @@ Meticulously execute the user's backlog story, ensuring every task in the plan i
 
 3. **Implementation**
    - Implement the backlog story as presented.
-   - You have full authority to:
-     - Modify the project.
-     - Create new files and directories.
-     - Install packages.
-     - Run commands.
-     - Use git.
-     - Delete files within the project directory.
-   - **Restrictions:** Never delete:
-     - The project base directory.
-     - The "docs" directory or its contents.
-     - Any `.env` files.
-     - `.cursor` or `.vscode` directories.
 
 4. **Quality Assurance**
    - Ensure there are no errors or warnings. Run linters, compilers, and type checkers.
+   - create comprehensive tests for all new functionality. Ensure all tests (including existing tests) pass.
    - If errors occur, analyze and fix them, then re-run checks.
 
 5. **Completion**
@@ -69,4 +56,8 @@ Meticulously execute the user's backlog story, ensuring every task in the plan i
 
 ## References
 
+- use the context7 MCP server
 - [coding-style.mdc](mdc:.cursor/rules/coding-style.mdc)
+- [project docs](docs/project/PROJECT.md)
+- [roadmap](docs/project/ROADMAP.md)
+- [tasks](docs/project/TASKS.md)

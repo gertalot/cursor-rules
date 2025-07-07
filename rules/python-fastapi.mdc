@@ -1,6 +1,6 @@
 ---
-description: Best practices to follow when working with Python, FastAPI, SQLAlchemy, or Pydantic
-globs: 
+description: 
+globs: *.py
 alwaysApply: false
 ---
 # Python FastAPI Best Practices
@@ -21,15 +21,14 @@ alwaysApply: false
 
 ## Coding Standards
 
-1. **Meaningful Names:** Use descriptive names for variables, functions, and classes.
-2. **PEP 8 Compliance:** Follow PEP 8, but allow lines up to 120 characters.
-3. **Docstrings:** Add docstrings to all functions and classes to explain their purpose.
-4. **Simplicity:** Write clear, simple code; avoid unnecessary complexity.
-5. **List Comprehensions:** Prefer list comprehensions over loops for list creation when appropriate.
-6. **Exception Handling:** Use `try`/`except` blocks to handle exceptions gracefully.
-7. **Virtual Environments:** Always isolate dependencies using virtual environments (e.g., `venv`).
-8. **Testing:** Write unit tests to ensure code reliability.
-9. **Type Hints:** Use type hints for clarity and type checking.
-10. **Avoid Globals:** Minimize use of global variables to reduce side effects.
+- **Case:** use `snake_case`
+- **Meaningful Names:** Use descriptive names for variables, functions, and classes.
+- **PEP 8 Compliance:** Follow PEP 8, but allow lines up to 120 characters.
+- **Docstrings:** Add docstrings to all functions and classes to explain their purpose.
+- **List Comprehensions:** Prefer list comprehensions over loops for list creation when appropriate.
+- **Exception Handling:** Use `try`/`except` blocks to handle exceptions gracefully.
+- **Virtual Environments:** Always isolate dependencies using virtual environments (e.g., `venv`).
+- **Type Hints:** Use type hints for clarity and type checking.
+- **Avoid Globals:** Minimize use of global variables to reduce side effects.
 
 Adhering to these practices ensures clean, efficient, and maintainable Python code.

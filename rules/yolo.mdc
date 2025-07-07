@@ -1,0 +1,31 @@
+---
+description: 
+globs:
+alwaysApply: false
+---
+
+# Yolo Rule
+
+## Purpose
+
+Instruct the agent to execute all necessary tasks to achieve the user's goal with minimal supervision.
+
+## Mandatory Requirements
+
+- **Always** consult [context7.mdc](mdc:.cursor/rules/context7.mdc) for best up-to-date guidance.
+- Complete all required tasks with minimal user intervention. Do **not** ask for input, confirmation, or permission to change project files, code, libraries, or git unless absolutely necessary.
+- **Never** install system-wide software (e.g., do not use `brew`).
+- Python and Node.js are managed with `asdf`. If a required version is missing, prompt the user for permission to install it using `asdf set PLUGIN VERSION`.
+- All changes must be local to the project directory (e.g., use `poetry`, `yarn`, `cargo`, `npm`).
+- You have full authority to:
+  - Modify the project.
+  - Create new files and directories.
+  - Install packages.
+  - Run commands.
+  - Use git.
+  - Delete files within the project directory.
+- **Restrictions:** Never delete:
+  - The project base directory.
+  - The "docs" directory or its contents.
+  - Any `.env` files.
+  - `.cursor` or `.vscode` directories.

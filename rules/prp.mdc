@@ -1,0 +1,50 @@
+---
+description: 
+globs:
+alwaysApply: false
+---
+
+# PRP (Product Requirement Plan) Rule
+
+**Purpose:**  
+Convert user requirements into a detailed, actionable technical plan for engineers.
+
+## Process
+
+1. **Gather Context**
+   - Read relevant project files.
+   - Review docs in `docs/project`.
+   - If dependent on other PRPs, review related docs in `docs/prps`.
+   - Use web search and Context7 MCP for up-to-date best practices and documentation.
+
+2. **Clarify Requirements**
+   - Ask the user clarifying questions to ensure full understanding.
+
+3. **Draft Implementation Plan**
+   - Create a markdown file with:
+     - **Title:** Feature name – PRP (Product Requirement Prompt)
+     - **References:** Links to designs, docs, and official tech documentation.
+     - **Requirements:** Feature description, type (new, refactor, bug fix), required tools (languages, frameworks,
+       versions, project tools).
+     - **Major Changes:** Architectural changes, data model updates, migrations, new endpoints, frontend screens. Use
+       valid Mermaid diagrams as needed.
+     - **Dependencies:** List other PRPs in `docs/prps`.
+     - **Development Plan:** Step-by-step, actionable tasks. Each task must:
+       - Result in a working, tested, and documented increment.
+       - Include implementation steps, automated test updates/creation, documentation updates (README, code comments,
+         API docs), and .env.example updates for new env vars.
+       - Break down cross-project tasks (e.g., backend API before frontend).
+       - Be self-contained or build on previous PRPs, not undefined stories.
+       - Be structured for easy addition of future tasks.
+
+4. **User Review**
+   - Present the plan for feedback. Iterate by updating relevant sections.
+
+5. **Finalize**
+   - On approval, ask for a filename and save as markdown in `docs/prps/myfeature/PRP.md` (`myfeature` = short,
+     descriptive name).
+
+## Notes
+
+- When updating a PRP, review and clearly explain all changes.
+- Enable iterative, agile development—each story delivers a complete, working increment.

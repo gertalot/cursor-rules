@@ -64,8 +64,8 @@ The summary must be organized as follows:
   - [...]
 ```
 
+## Output Format
 
-**Output Requirement:**  
-Output only the summary, with no additional commentary or explanation.
-
-
+- Output the entire rewritten document as preformatted markdown.
+- Use triple backticks with `markdown`.
+- **MANDATORY:** Output **ONLY** the results inside the code block, no other output is allowed.
