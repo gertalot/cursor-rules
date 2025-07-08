@@ -1,0 +1,21 @@
+---
+description: Coding style rules for all code changes
+globs:
+alwaysApply: false
+---
+
+# Coding Style
+
+- **Line Length:** Max 120 characters
+- **Indentation:** 2 spaces
+- **Type Annotations:** Always use type annotations and strong types. Don't use `any`.
+- **Error Handling:** Handle errors explicitly; never use bare `except`/`catch`.
+- **Immutability:** Prefer immutable data; do not mutate function arguments.
+- **Dependencies:**
+  - Minimise external dependencies.
+  - Prefer standard library or well-known and widely-used libraries.
+  - Use relative imports within packages.
+- **Formatting and Linting:** Use auto-formatters (Ruff, Prettier, Clippy, ESLint, etc.).
+- **Cleanliness:** Remove unused code, variables, and imports.
+- **Security:** Follow secure coding; never commit secrets/credentials.
+- **Checks:** Fix all linter, type, build, test, and deploy errors.
