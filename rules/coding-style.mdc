@@ -19,3 +19,53 @@ alwaysApply: false
 - **Cleanliness:** Remove unused code, variables, and imports.
 - **Security:** Follow secure coding; never commit secrets/credentials.
 - **Checks:** Fix all linter, type, build, test, and deploy errors.
+
+## Designing software
+
+- YAGNI. The best code is no code. Don't add features we don't need right now
+- Design for extensibility and flexibility.
+- Good naming is very important. Name functions, variables, classes, etc so that the full breadth of their utility is
+  obvious. Reusable, generic things should have reusable generic names
+
+## Use up to date knowledge
+
+- **Always** use Context7 (MCP server) for:
+  - Library, framework, tool documentation
+  - Best practices, recommended patterns, up-to-date syntax
+- For every coding, configuration, or architectural task:
+  - **Consult Context7** for latest best practices, even if already known.
+  - Do **not** rely solely on training or memory for best practices, syntax, or recommendations.
+  - If a solution is requested, **check Context7** for the most current, authoritative answer before proceeding.
+  - If no best practice or up-to-date answer is found in Context7, state this explicitly.
+  - Failing to use Context7 or not checking for latest best practices is a critical error.
+
+## Naming and Comments
+
+- Names MUST tell what code does, not how it's implemented or its history
+- NEVER use implementation details in names (e.g., "ZodValidator", "MCPWrapper", "JSONParser")
+- NEVER use temporal/historical context in names (e.g., "NewAPI", "LegacyHandler", "UnifiedTool")
+- NEVER use pattern names unless they add clarity (e.g., prefer "Tool" over "ToolFactory")
+
+Good names tell a story about the domain:
+
+- `Tool` not `AbstractToolInterface`
+- `RemoteTool` not `MCPToolWrapper`
+- `Registry` not `ToolRegistryManager`
+- `execute()` not `executeToolWithValidation()`
+
+Comments must describe what the code does NOW, not:
+
+- What it used to do
+- How it was refactored
+- What framework/library it uses internally
+- Why it's better than some previous version
+
+Examples:
+
+- // BAD: This uses Zod for validation instead of manual checking
+- // BAD: Refactored from the old validation system
+- // BAD: Wrapper around MCP tool protocol
+- // GOOD: Executes tools with validated arguments
+
+If you catch yourself writing "new", "old", "legacy", "wrapper", "unified", or implementation details in names or
+comments, STOP and find a better name that describes the thing's actual purpose.
