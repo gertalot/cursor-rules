@@ -2,12 +2,17 @@
 
 A collection of Cursor rules that help you automate your software development process with AI, using [Context
 Engineering](https://github.com/coleam00/context-engineering-intro). It's like vibe coding but, because you're putting
-an effort into planning, with great and predictable results.
+an effort into planning, with much better results.
+
+These rules are inspired by some of the interesting things people are learning about prompt engineering. Most of the
+very clever people online are using [Claude Code](https://https://claude.ai/), which I would love to try out, but I'm
+using up my Cursor subscription first before switching. 😊
 
 ## Prerequisites
 
 - [Cursor](https://www.cursor.com/)
-- [Context7 MCP Server](https://github.com/upstash/context7)
+- [Context7 MCP Server](https://github.com/upstash/context7) - optional but extremely useful
+- [Playwright MCP Server](https://github.com/microsoft/playwright-mcp) - optional but also useful
 - a POSIX called `sh` on your PATH (if you want to run the install script)
 
 ## Installation
