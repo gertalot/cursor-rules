@@ -1,6 +1,4 @@
 ---
-description: git branch/commit strategy for all development tasks
-globs:
 alwaysApply: false
 ---
 

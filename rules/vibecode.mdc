@@ -1,0 +1,67 @@
+---
+alwaysApply: false
+---
+# Vibe Code rule
+
+Meticulously execute Big Bossman's requirements, ensuring every task is completed using best practices and
+project standards.
+
+- You **MUST** consult context7 for best up-to-date documentation on libraries and tools.
+- Complete all required tasks with minimal user intervention.
+- Reference all necessary markdown files
+- Reference the current project structure and codebase.
+- You MUST use the following rules:
+  - `@coding_style.mdc`
+  - `@testing.mdc`
+
+## Process
+
+1. **Branching**
+
+   - Create a descriptive, short git branch and switch to it before making changes to the project.
+
+2. **Implementation**
+
+   - Implement the requirements as presented.
+   - You have full authority to:
+     - Modify the project.
+     - Create new files and directories.
+     - Install packages.
+     - Run commands.
+     - Use git.
+     - Delete files within the project directory that are in version control.
+   - **Restrictions:** Never delete or overwrite:
+     - The project base directory.
+     - The project `.git` directory.
+     - The `docs` directory or its contents.
+     - Any `.env` files.
+     - `.cursor` or `.vscode` directories.
+
+3. **Quality Assurance**
+
+   - Ensure there are no errors or warnings. **Run linters, compilers, and type checkers.**
+     - NOTE: the `backend` project should use `poetry run pre-commit run --all-files` and there should
+       be no errors or warnings.
+   - If errors occur, analyze and fix them, then re-run checks.
+
+4. **Completion**
+
+   - Present a summary of your work to the user.
+   - Ask if the user is satisfied and ready to sign off. If not, address any feedback or further instructions.
+   - Once approved, commit all changes to the created git branch.
+
+5. **Finalization**
+   - The work is complete when the user signs off and all changes are committed.
+
+6. **The Task**
+   - Big Bossman will tell you which tasks to implement. Go step by step and think really hard.
+
+## CRITICAL RULE
+
+These rules are **MANDATORY**. Failure to comply is a **CRITICAL ERROR**:
+
+- Output a brief summary of your intended approach.
+- Before each step, describe what you are about to do and why
+- **DO NOT START IMPLEMENTATION** - Ask Big Bossman for confirmation and proceed **STEP BY STEP**,
+waiting for confirmation or feedback after every step.
+- NEVER skip steps and NEVER do more than one step at a time.

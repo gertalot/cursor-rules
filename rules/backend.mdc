@@ -1,0 +1,18 @@
+---
+description: Use for all tasks related to the backend subproject (all python or poetry tasks, everything in the `backend` directory)
+alwaysApply: false
+---
+# Backend project set up
+
+- All backend code is in the `backend` directory. It uses python 3.12.8 and poetry.
+- There are .env and .env.test files that are already configured. **NEVER TOUCH THESE**
+- The following environment variables are defined and available to the code via the .env and .env.test files:
+  - DATABASE_URL (database connection string)
+  - DATABASE_SYNC_URL (database connection string for alembic only)
+  - OPENAI_API_KEY (openAI API key)
+  - CHUNK_SIZE, CHUNK_OVERLAP, TOP_K_CHUNKS (used for embeddings)
+- The code uses dotenv to load the values from the environment variables
+- The test database and normal database are **different**. The test code should **NEVER** use the normal database.
+  The .env and .env.test files use different DATABASE_URL values to ensure this.
+- Always run `poetry run pre-commit run --all-files` to run ruff, black, mypy, markdownlint, and pytest. Everything
+  should pass and no tests should be skipped.

@@ -1,9 +1,7 @@
 ---
-description: Systematic debugging process to fix issues
-globs:
+description: Use when debugging and analysing issues with the codebase
 alwaysApply: false
 ---
-
 # Systematic Debugging Process
 
 - YOU MUST ALWAYS find the root cause of any issue you are debugging

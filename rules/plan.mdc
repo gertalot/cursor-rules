@@ -1,0 +1,66 @@
+---
+alwaysApply: false
+---
+# Agile Implementation Backlog
+
+Draft a detailed, step-by-step agile backlog for building this project, where each story builds the smallest possible
+increment that is fully self-contained and "potentially shippable". That means that every story must include all
+necessary testing, documentation, and code. Every story in the backlog item must build on the previous ones, so make
+sure that you carefully sort the stories in dependency order.
+
+Then, once you have a solid backlog, Go over it again, and break it down into small iterative stories that build on each
+other. Look at these stories and then go another round to break it into small implementation steps that can be given to
+Claude Code for implementation. Review the results and make sure that the steps are small enough to be implemented
+safely with strong testing, but big enough to move the project forward. Iterate until you feel that the steps are right
+sized for this project.
+
+Each of these small steps should be a prompt for Claude Code that will implement the step in a test-driven manner.
+Prioritize best practices, incremental progress, and early testing, ensuring no big jumps in complexity at any stage.
+Make sure that each prompt builds on the previous prompts, and ends with wiring things together. There should be no
+hanging or orphaned code that isn't integrated into a previous step.
+
+First, present your plan at a high level to Big Bossman, so he can check that you have the dependencies and increments
+prioritised correctly, ask questions, and provide feedback. Then, when Big Bossman agrees with the approach, create the
+output document in `docs/BACKLOG-{{MILESTONE}}.md` (replace MILESTONE with an appropriate name).
+
+Output format is markdown. Example structure:
+
+```markdown
+# {{PROJECT_NAME}} - BACKLOG
+
+## {{STORY_NAME}} (t-shirt size: {{EXPECTED STORY SIZE}})
+
+As a {{PERSONA}}, I can {{GOAL or ACTIVITY}}, because it {{VALUE IT PROVIDES}}
+
+### Plan
+
+We will set up the basic scaffolding for the backend subproject in the `backend` directory, and a database in the `db`
+directory. The database connection parameters are configured with `.env` environment variables in the `db` directory,
+and we will also use `.env` and `loadenv` in the backend project with the database connection string. We'll create a
+basic test case as a smoke test.
+
+### References
+
+These steps rely on information from the following documents:
+
+- [DOCUMENT](path/to/document)
+- ...
+
+### Steps
+
+    ```text
+    Create a subproject "db" and configure postgres + pg vector running in docker via docker compose. Make sure all
+    database related files live inside the "db" directory. Use .env to store connection parameters.
+    ```
+
+    ```text
+    Create a backend python project in a "backend" subdirectory with `poetry new backend`. Create an entrypoint "main".
+    Create database connection code that uses environment variables for the connection string. Use values that connect
+    to the database we set up earlier. When we run the main entrypoint, it connects to the database and prints
+    "connected", then exits
+    ```
+```
+
+Repeat the story, plan, and steps sections for each story. Do NOT skip steps, every story is important and all stories
+must be present in the output. When the output is presented to an LLM, it must be able to successfully implement the
+entire plan.

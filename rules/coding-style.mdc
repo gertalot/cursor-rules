@@ -1,9 +1,7 @@
 ---
-description: Coding style rules for all code changes
-globs:
+description: Use for all coding tasks, developing software, or writing/planning about software
 alwaysApply: false
 ---
-
 # Coding Style
 
 - **Line Length:** Max 120 characters
@@ -22,8 +20,11 @@ alwaysApply: false
 
 ## Designing software
 
-- YAGNI. The best code is no code. Don't add features we don't need right now
+- The best code is no code. Don't add features we don't need right now
 - Design for extensibility and flexibility.
+- Use recommended/default configuration where possible, example:
+  - **BAD**: creating a `pyproject.toml` from scratch in a python project
+  - **GOOD**: use `poetry new` and then edit the file, or use commands like `poetry add` to add dependencies
 - Good naming is very important. Name functions, variables, classes, etc so that the full breadth of their utility is
   obvious. Reusable, generic things should have reusable generic names
 
@@ -34,6 +35,7 @@ alwaysApply: false
   - Best practices, recommended patterns, up-to-date syntax
 - For every coding, configuration, or architectural task:
   - **Consult Context7** for latest best practices, even if already known.
+  - If context7 doesn't know, search the web for authoritative answers
   - Do **not** rely solely on training or memory for best practices, syntax, or recommendations.
   - If a solution is requested, **check Context7** for the most current, authoritative answer before proceeding.
   - If no best practice or up-to-date answer is found in Context7, state this explicitly.
