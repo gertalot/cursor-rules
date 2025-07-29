@@ -77,9 +77,9 @@ It also tells the LLM to always call you **Big Bossman** — if it doesn't, you 
 
 | **rule** | **example** | **description** |
 | -------- | ----------- | --------------- |
-| **brainstorm** | `Read @PROJECT.md and @MILESTONE-1.md for context. @brainstorm.mdc let's brainstorm a spec for milestone 1` | turn an idea into a detailed architecture document |
-| **plan** | `Read @SPEC-1.md and all relevant documents for context. @plan.mdc create a backlog for milestone 1` | Produce a number of stories to implement specs |
-| **vibecode** | `Read @BACKLOG-1.md . @vibecode.mdc Let's implement story 1` | implement (vibe-code) the story |
+| **spec** | `Read @PROJECT.md and @MILESTONE-1.md for context. @spec.mdc a shopping cart feature` | turn an idea into a detailed specification in a brainstorm session |
+| **plan** | `Read @PROJECT.md for context. @plan.mdc @spec-1.md` | Create a detailed implementation backlog for the specification |
+| **vibecode** | `Read @backlog-1.md . @vibecode.mdc story 1 step by step` | implement (vibe-code) the story |
 
 ## Workflow Overview
 
@@ -87,12 +87,10 @@ The following diagram illustrates the overall workflow:
 
 ```mermaid
 flowchart TD
-    A["Product Brief"] --> B["Milestone Document (optional)"]
-    B --> C["Brainstorming Session (@brainstorm.mdc) → Spec Document"]
-    C --> D["Planning Session (@plan.mdc) → Backlog Document"]
-    D --> E["Vibe Coding (@vibecode.mdc) Implement Stories"]
-    E --> F["Testing, Linting, Feedback"]
-    F --> G["Ship it!"]
+    C["Brainstorm a spec (@spec.mdc a feature)"]
+    C --> | Specification | D["Create a backlog /<br/> implementation plan (@plan.mdc @spec-1.md)"]
+    D --> | Implementation backlog | E["Vibe Coding (@vibecode.mdc story 1)<br/>Implement Stories"]
+    E --> | code | G["Ship it!"]
 ```
 
 The workflow consists of three main steps, each supported by a specific rule. Here's how to use them. Create new chat
