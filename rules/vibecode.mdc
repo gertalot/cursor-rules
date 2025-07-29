@@ -3,65 +3,57 @@ alwaysApply: false
 ---
 # Vibe Code rule
 
-Meticulously execute Big Bossman's requirements, ensuring every task is completed using best practices and
-project standards.
+This rule is used when the LLM agent needs to implement a story from an implementation backlog. Example:
+
+```txt
+Read @PROJECT.md and @spec-1.md for context. @vibecode.mdc @backlog-1.md story 1
+```
+
+the backlog document contains instructions for you to implement a story. Explanation of a backlog story structure (don't
+do anything yet, this is just for your understanding):
+
+- Under the story heading, there is a description of what the story is about
+- **Verification Criteria** must be met for the story to be complete. The criteria can be measured with passing tests or
+  functionality.
+- **Test cases** are automated tests that must pass for the story to be complete
+- **Implementation** contains step-by-step instructions for you that implement part of the story
+
+When this rule is used, follow this process:
+
+1. **Context**: Read the context documents and the backlog document. If you think anything else is relevant, read that
+   also
+2. **Backlog**: Read the backlog document specified in the rule. It is important to understand the whole backlog so you
+   can make the best decisions
+3. **Story**: Read the story specified by the user (e.g. "story 1") in the backlog.
+4. **Make a plan**: Look at the story and go over each of the verification criteria, test cases, and implementation
+   steps. Create a plan to implement the steps. Use context7 and web search to make sure you have the most up-to-date
+   information (don't assume you already know). Think really hard about the best plan! Your plan must implement the
+   story requirements with high quality code, minimal changes, and with the simplest solutions that follow best
+   practice.
+5. **Approval**: Present your plan to Big Bossman. Explain what changes you will make and what code will be affected.
+   WAIT FOR APPROVAL FROM BIG BOSSMAN! This is **CRITICAL**: Do **NOT** start implementation until you have approval.
+6. **Implement**: Implement the story step-by-step and wait for approval or feedback from Big Bossman after each step.
+   Example: The story has "Step 1", "Step 2", and "Step 3" under the implementation section. After initial approval, you
+   can implement step 1. Then present your results to Big Bossman and show that you have completed the step. Wait for
+   feedback (to fix things) or approval to proceed to step 2. And so on until the story is complete.
+   1. When the step is complete and approved, mark the step as done in the document.
+   2. If there are linter errors or type errors, fix them and try again.
+   3. If there are failing tests that should pass, fix the code and try again.
+7. If you have done all these steps, tell Big Bossman and wait for approval or feedback.
+8. **Completion**: When all steps are complete, go back to the "Verification Criteria" and "Test Cases" sections
+   1. Ensure all test cases are implemented and passing. Mark each test that is implemented and passing as done.
+      If any tests are not implemented or not passing, tell big bossman and wait for instructions: You'll have to
+      fix them before we can complete.
+   2. For each verification criterion, make sure that is is satisfied, and then mark as done. If not all verification
+      criteria are satisfied, tell Big Bossman and ask for instructions.
+
+Important notes:
 
 - You **MUST** consult context7 for best up-to-date documentation on libraries and tools.
-- Complete all required tasks with minimal user intervention.
-- Reference all necessary markdown files
-- Reference the current project structure and codebase.
+- Read the codebase and understand how to implement your changes
 - You MUST use the following rules:
   - `@coding_style.mdc`
   - `@testing.mdc`
+  - any rules that may be relevant to the story
 
-## Process
-
-1. **Branching**
-
-   - Create a descriptive, short git branch and switch to it before making changes to the project.
-
-2. **Implementation**
-
-   - Implement the requirements as presented.
-   - You have full authority to:
-     - Modify the project.
-     - Create new files and directories.
-     - Install packages.
-     - Run commands.
-     - Use git.
-     - Delete files within the project directory that are in version control.
-   - **Restrictions:** Never delete or overwrite:
-     - The project base directory.
-     - The project `.git` directory.
-     - The `docs` directory or its contents.
-     - Any `.env` files.
-     - `.cursor` or `.vscode` directories.
-
-3. **Quality Assurance**
-
-   - Ensure there are no errors or warnings. **Run linters, compilers, and type checkers.**
-     - NOTE: the `backend` project should use `poetry run pre-commit run --all-files` and there should
-       be no errors or warnings.
-   - If errors occur, analyze and fix them, then re-run checks.
-
-4. **Completion**
-
-   - Present a summary of your work to the user.
-   - Ask if the user is satisfied and ready to sign off. If not, address any feedback or further instructions.
-   - Once approved, commit all changes to the created git branch.
-
-5. **Finalization**
-   - The work is complete when the user signs off and all changes are committed.
-
-6. **The Task**
-   - Big Bossman will tell you which tasks to implement. Go step by step and think really hard.
-
-## CRITICAL RULE
-
-These rules are **MANDATORY**. Failure to comply is a **CRITICAL ERROR**:
-
-- Output a brief summary of your intended approach.
-- Before each step, describe what you are about to do and why
-- **DO NOT START IMPLEMENTATION** - Ask Big Bossman for confirmation and proceed **STEP BY STEP**,
-waiting for confirmation or feedback after every step.
-- NEVER skip steps and NEVER do more than one step at a time.
+Now you can begin with the process described above.
