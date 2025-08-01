@@ -99,7 +99,8 @@ untracked files unless they're in .gitignore!) if the AI messes up and you want 
 
 Command example: `@ears.mdc a rule that scans for placeholder text`
 
-Use a good thinking model like o3 for best results.
+Use a good thinking model like o3 for best results, and **start a new chat session** so it doesn't get confused with
+old context. Starting new chat sessions frequently is **key** to good results.
 
 What happens:
 
@@ -127,7 +128,7 @@ Resulting artefact: `/docs/specs/rule-placeholder-text-spec.md`
 
 Command example: `@design.mdc @rule-placeholder-text-spec.md`
 
-Use a good thinking model like o3 for best results.
+Use a good thinking model like o3 for best results. Again, start a new chat session before you do this.
 
 What happens:
 
@@ -147,7 +148,8 @@ Resulting artefact: `/docs/specs/rule-placeholder-text-design.md`
 
 Command example: `@plan.mdc @rule-placeholder-text-spec.md @rule-placeholder-text-design.md`
 
-Since this uses a fair bit of reasoning and planning, a good reasoning model helps, like o3.
+Since this uses a fair bit of reasoning and planning, a good reasoning model helps, like o3. As usual, start a new
+chat session before doing this.
 
 What happens:
 
@@ -171,7 +173,18 @@ Resulting artefact: `/docs/specs/rule-placeholder-text-plan.md`
 
 Command example:  `@execute.mdc @ule-placeholder-text-plan.md story 1`
 
-Use a good coding model, like Claude 4 Sonnet.
+Use a good coding model, like Claude 4 Sonnet. **NOTE**: Start a new chat session before **every** story you tackle!
+This greatly reduces the chances your AI goes off track and loses track.
+
+Before you start, and **after every story**, really make sure the code is doing what you want. Sometimes the AI sounds
+very convincing when it tells you it's done, and then you look at the code and it's a mess. Almost always this is
+caused by you not *really* understanding what you wanted to build in the spec or design stages.
+
+When the AI goes off-track and makes a mess, or keeps focusing on unimportant details, or keeps inventing ever more
+complicated solutions to failing tests, it's best to reset your workspace to your last commit and try again.
+
+If it still fails, go back to your earlier spec and design stages and see if you can come up with better requirements
+for the story.
 
 What happens:
 
