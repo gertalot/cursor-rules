@@ -1,14 +1,16 @@
 ---
 alwaysApply: false
 ---
-# Agile Implementation Backlog
+# Agile Implementation Plan
 
-This rule is used together with a reference to a spec, e.g. `@plan.mdc @spec-shopping-cart.md`.
+This rule is used together with a reference to a specification and a design document, e.g.
 
-Your task is to draft a detailed, step-by-step agile backlog for building the spec, where each story builds the smallest
-possible increment that is fully self-contained and "potentially shippable". Every story must include all necessary
-testing, documentation, and code. Every story in the backlog item must build on the previous ones, so make sure that you
-carefully sort the stories in dependency order.
+`@plan.mdc @shopping-cart-requirements.md @shopping-cart-design.md`.
+
+Your task is to draft a detailed, step-by-step agile implementation backlog for building the spec, where each story
+builds the smallest possible increment that is fully self-contained and "potentially shippable". Every story must
+include all necessary testing, documentation, and code. Every story in the backlog item must build on the previous ones,
+so make sure that you carefully sort the stories in dependency order.
 
 When you are done, go through the stories one by one, and break each one into small implementation steps in the form of
 instructions (i.e. prompts) for an LLM agent for implementing the story in a test-driven manner.
@@ -20,8 +22,8 @@ Prioritize best practices, incremental progress, and early testing, ensuring no 
 Make sure that each prompt builds on the previous prompts. There should be no hanging or orphaned code that isn't
 integrated into a previous step.
 
-First, present your plan at a high level to Big Bossman, so he can check that you have the dependencies and increments
-prioritised correctly, ask questions, and provide feedback. Then, when Big Bossman agrees with the approach, ask where
+First, present your plan at a high level to Big Boss, so he can check that you have the dependencies and increments
+prioritised correctly, ask questions, and provide feedback. Then, when Big Boss agrees with the approach, ask where
 to save the document.
 
 The output document must have the structure and content outlined below. The output document must have all the necessary
@@ -29,41 +31,38 @@ detail with full clarity and no ambiguity.
 
 Implementation plan document structure:
 
----
+```markdown
+# Implementation Plan - {{feature name}}
 
 ## References
 
-(references to the spec file and any other documentation that was used to create this spec. Include links to websites or
-library documentation that have normative implementation guidelines)
+- **requirements**: {{link to requirements document for this plan}}
+- **design**: {{link to technical design document for this plan}}
 
 ## Stories
 
-(repeat the following for each story)
+{{repeat the following for each story}}
 
-### Story 1 - (DESCRIPTION)
+### Story 1 - {{DESCRIPTION}}
 
-(Describe the story in words)
+{{Describe the story in words}}
+
+**Requirements**: {{list all requirements this story satisfies, e.g. *3.1*, *3.2*, *6.2*, ...}}
 
 #### Verification Criteria
 
-(Describe specific, measurable criteria that verify the solution works correctly)
+- [ ] 1. {{specific, measurable criteria that verify the solution works correctly}}
+- [ ] 2. {{specific, measurable criteria that verify the solution works correctly}}
 
 Test cases:
 
-- [ ] Test 1: (description of test and expected outcome)
-- [ ] Test 2: (description of test and expected outcome)
+- [ ] Test 1: {{description of test and expected outcome}}
+- [ ] Test 2: {{escription of test and expected outcome}}
 
 #### Implementation
 
-(repeat the following for each implementation step in the story)
+{{repeat the following for each implementation step in the story}}
 
-- [ ] Step 1: (description of the implementation step)
-
-```txt
-(detailed step by step LLM prompt for implementing the solution)
+- [ ] 1. {{prompt instruction of the implementation step for the LLM}}
+- [ ] 2. {{prompt instruction of the implementation step for the LLM}}
 ```
-
-#### LLM/Human collaboration notes
-
-(describe tasks that can be fully handled by the AI coding agent, vs. critical points where Big Bossman needs to test
-or review).

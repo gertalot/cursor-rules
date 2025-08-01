@@ -1,19 +1,21 @@
-# Context Engineering Rules for Cursor
+# Spec-driven development for Cursos
 
-A collection of Cursor rules that help you automate your software development process with AI, using [Context
-Engineering](https://github.com/coleam00/context-engineering-intro). It's like vibe coding but, because you're putting
-an effort into planning, with much better results.
+A collection of Cursor rules that help you automate your software development process with AI, using spec-driven
+development. It's like vibe coding but, because you're putting an effort into planning, with much better results.
 
 These rules are inspired by some of the interesting things people are learning about prompt engineering. Most of the
 very clever people online are using [Claude Code](https://https://claude.ai/), which I would love to try out, but I'm
 using up my Cursor subscription first before switching. 😊
+
+It's also inspired by [Kiro](https://kiro.dev), AWS' new code assistant. It uses
+[EARS (Easy Approach to Requirements Syntax)](https://alistairmavin.com/ears/) as a clear, unambiguous way to describe
+requirements.
 
 ## Prerequisites
 
 - [Cursor](https://www.cursor.com/)
 - [Context7 MCP Server](https://github.com/upstash/context7) - optional but extremely useful
 - [Playwright MCP Server](https://github.com/microsoft/playwright-mcp) - optional but also useful
-- a POSIX called `sh` on your PATH (if you want to run the install script)
 
 ## Installation
 
@@ -24,113 +26,162 @@ Just copy the files from the "rules" directory to your `.cursor/rules`.
 I typically use the following structure in my projects
 
 ```txt
-my_project
-  +- .cursor
-  |    +- rules
-  |         +- (the rules from this repo)
-  |
-  +- docs (all relevant docs, for devs and LLMs)
-      +- PROJECT.md     (main project brief)
-      +- milestone-1     (a directory per milestone)
-      |   +- MILESTONE-1.md     (detailed description of what I want to do in milestone 1)
-      |   +- SPEC-1.md     (generated from the @brainstorm.mdc rule with MILESTONE-1.md and PROJECT.md as context)
-      |   +- BACKLOG-1.md     (generated from the @plan.mdc rule)
-      +- JOURNAL.md     (the LLM keeps track of what it's done here)
-      
+my_project/
+├─ .cursor/
+│  │
+│  ├─ rules/
+│     ├─ (the rules from this repo)
+│
+├─ docs/ (all relevant docs, for devs and LLMs)
+   │
+   ├─ PROJECT.md                  (main project brief)
+   ├─ JOURNAL.md                  (the LLM keeps track of what it's done here)
+   ├─ (more documents)
+   │
+   ├─ specs/                      (specs created by the `@ears.mdc` rule)
+   │  │
+   │  ├─ shopping-cart-spec.md  
+   │  
+   ├─ design/                     (designs created by the `@design.mdc` rule)
+   │  │
+   │  ├─ shopping-cart-design.md
+   │
+   ├─ backlog/                    (implementation plans created with `@plan.mdc` rule)
+      │
+      ├─ shopping-cart-backlog.md
 ```
 
 - **.cursor/rules/**:  All the custom Cursor rule files from this repository.
 - **docs/**: Contains project-level documentation (idea, architecture, roadmap, etc.).
-- **docs/milestone-*/**: Contains detailed documents for each milestone
+- **docs/specs/*/**: Contains detailed requirements for each feature
+- **docs/design/*/**: Contains detailed technical design for each feature
+- **docs/backlog/*/**: Contains detailed implementation plans for each feature
 
-## Rules
+---
 
-## Language-specific
+## Developer workflow
 
-These are automatically loaded when the agent is working with code files. They define preferred tech stack, versions,
-testing, and code style:
+The development process for new functionality is split into four consecutive collaborative sessions driven by
+specialised rule documents. The sessions are:
 
-- **python-fastapi**
-- **typescript-nextjs**
+1. Specification (`@ears.mdc`)
+2. Technical design (`@design.mdc`)
+3. Implementation plan (`@plan.mdc`)
+4. Implementation execution (`@execute.mdc`)
 
-## Context-dependent rules
-
-The following rules are loaded automatically by Cursor depending on what it's doing:
-
-- **backend** - specific information about working with the backend. Included here as an example. I learned the hard
-  way that the LLM figured out it could do `echo STUFF > .env` even though Cursor blocks the LLM from editing .env files
-  directly. Then it started going on a wild goose chase wondering why it couldn't talk to my database any longer. So
-  that's why there's a rule about `.env` files in there.
-- **coding-style** - general rules about working with code
-- **debugging** - tells the LLM how to approach debugging tasks
-- **testing** - promotes a test-driven development approach and encourages the LLM to write tests
-- **version-control** - I don't like relying on checkpointing and prefer explicit file management with git so I can
-  easily start over when the LLM goes off track. This encourages the LLM to not mess with code without version control.
-
-## Coding workflow rules
-
-The **PRIME_DIRECTIVE** rule is always loaded. It tells the agent where to look for documentation and examples, and
-general guidelines around the agent's behaviour. It instructs the LLM to think step by step, use the context7 MCP
-server, follow best practice, etc.
-
-It also tells the LLM to always call you **Big Bossman** — if it doesn't, you know it has forgotten some or all of its rules.
-
-| **rule** | **example** | **description** |
-| -------- | ----------- | --------------- |
-| **spec** | `Read @PROJECT.md and @MILESTONE-1.md for context. @spec.mdc a shopping cart feature` | turn an idea into a detailed specification in a brainstorm session |
-| **plan** | `Read @PROJECT.md for context. @plan.mdc @spec-1.md` | Create a detailed implementation backlog for the specification |
-| **vibecode** | `Read @backlog-1.md . @vibecode.mdc story 1 step by step` | implement (vibe-code) the story |
-
-## Workflow Overview
-
-The following diagram illustrates the overall workflow:
+The diagram below shows the flow:
 
 ```mermaid
-flowchart TD
-    C["Brainstorm a spec (@spec.mdc a feature)"]
-    C --> | Specification | D["Create a backlog /<br/> implementation plan (@plan.mdc @spec-1.md)"]
-    D --> | Implementation backlog | E["Vibe Coding (@vibecode.mdc story 1)<br/>Implement Stories"]
-    E --> | code | G["Ship it!"]
+graph TD
+    A[Create new git branch] --> B[Specification session<br/>@ears.mdc]
+    B --> C[Design session<br/>@design.mdc]
+    C --> D[Implementation Plan session<br/>@plan.mdc]
+    D --> E[Execution session<br/>@execute.mdc]
+    E --> F[PR, Code Review & Merge]
 ```
 
-The workflow consists of three main steps, each supported by a specific rule. Here's how to use them. Create new chat
-sessions often, **at least before starting each of these workflow steps** but sometimes more often.
+Each session produces an artefact that becomes the input for the next stage. The whole flow is iterative: if new
+information surfaces, you can jump back to the earlier session, update the artefact and proceed again.
 
-### 1. Capture and Refine Your Idea
+---
 
-- **Create an initial idea document**: In `docs/PROJECT.md`, write a markdown file describing your product idea.
-  Include any relevant references, such as screenshots, UI designs, or other documents.
-- **Optionally create a document for a milestone**: to break up your project in smaller chunks, define a milestone of
-  what you want to build first. For example, I'm working on a big project involving a backend and frontend, and my first
-  milestone is a bare-bones command line tool that proves the core backend functionality.
-- **Brainstorm**: Select a good reasoning model such as `o3` and use the `@brainstorm.mdc` rule. Give it your project
-  brief and optionally the milestone you want to build. It will take you on a journey with lots of back and forth
-  questions to define a specification for your milestone. This can take anywhere from half an hour to a couple of hours.
-  Tell it to save the result, e.g. to `docs/milestone-1/SPEC-1.md`. You can make or propose changes to the document.
+## 1. Start with a new git branch
 
-**Planning REALLY helps** the LLM! the more time you spend on thinking about the details of what you want to build, the
-better your vibe coding session will be. You'll spend much more time planning than actually coding.
+Create a feature branch off `main`, e.g. `git checkout -b feature/rule-placeholder-text`
 
-### 2. Create a backlog
+This isolates the work and makes it easy to track and review the change-set generated by the subsequent sessions. Most
+importantly, it lets you do `git restore .; git reset --hard; git clean -fd` (WARNING: that will delete all your
+untracked files unless they're in .gitignore!) if the AI messes up and you want to start over.
 
-- **Apply the `@plan.mdc` rule**: Use this rule to turn your spec into a detailed backlog. For best results use
-  a reasoning model like `o3`. Don't hesitate to give feedback, suggest changes, etc. Save the result as markdown.
-- The backlog markdown should have references to relevant documents, which really helps the LLM to understand what is
-  important information. That means you don't have to manually load all your markdown docs into the context.
+---
 
-### 5. Vibe code time
+## 2. Specification session – `@ears.mdc`
 
-- Load your backlog as context (e.g. `@BACKLOG.md`) and tell the LLM that you want to
-  `@vibecode.mdc story 1` or something to that effect. It can help to tell the LLM `we're focused on the backend for
-  this session`. Use Claude 4 Sonnet for good results.
+Command example: `@ears.mdc a rule that scans for placeholder text`
 
-Make sure you've got your codebase in git before you start and be prepared to stop the session, delete the mess,
-`git reset --hard` and start again. Once the LLM is off-track it usually has a hard time fixing its own mess.
+Use a good thinking model like o3 for best results.
 
-The prompts _should_ tell the LLM to take it one step at a time and stop to await further instructions. This gives you a
-chance to steer the LLM.
+What happens:
 
-It really helps to set up things like linting, formatting, type checking and tests. In my Python project I've got this
-all in a `pre-commit` config, and these prompts will usually trigger the LLM to run
-`poetry run pre-commit run --all-files` and iterate until everything is passing. You can usually go grab some coffee
-while it's doing this.
+1. The AI reads the `@ears.mdc` rule file (`.cursor/rules/ears.mdc`) and enters *specification mode*.
+2. The AI starts an **interactive Q&A loop**.  
+   - It asks **one question at a time**, digging into scope, value, edge cases, etc.  
+   - You answer until the requirements are fully clarified.
+3. When enough detail is gathered, the AI assembles a **Requirements Document**
+   - The document uses [EARS syntax](https://alistairmavin.com/ears/) for acceptance criteria
+4. The AI asks **where to save** the markdown file (or you tell it where to save it), usually under `docs/specs/`.
+
+This is a very interactive session, where both you and the AI will ask many questions. The AI is pretty good at
+understanding what questions to ask, but you should never be shy to provide feedback, ask for clarification, or
+tell it to `use context7 and web search for best practice solutions`. This usually gets the AI to search online
+for common patterns and implementation guidance.
+
+Really consider what the AI *thinks* your intentions are and make sure they're part of the documentation. If you
+miss a detail now, that could turn into a difficult implementation later where the AI just keeps going off-track.
+
+Resulting artefact: `/docs/specs/rule-placeholder-text-spec.md`
+
+---
+
+## 3. Design session – `@design.mdc`
+
+Command example: `@design.mdc @rule-placeholder-text-spec.md`
+
+Use a good thinking model like o3 for best results.
+
+What happens:
+
+1. The AI loads the referenced requirements document and the `@design.mdc` rule (`.cursor/rules/design.mdc`).
+2. It starts a new **interactive design workshop**. Again, the AI asks one focussed question at a time covering
+   architecture, interfaces, data flow, error handling, etc.  
+3. Once all questions are answered, the AI compiles a **Design Document**
+4. The AI asks **where to save** the markdown file (or you tell it where to save it), usually under `docs/specs/`.
+
+Similar to the previous step, this is a very interactive session.
+
+Resulting artefact: `/docs/specs/rule-placeholder-text-design.md`
+
+---
+
+## 4. Implementation Plan session – `@plan.mdc`
+
+Command example: `@plan.mdc @rule-placeholder-text-spec.md @rule-placeholder-text-design.md`
+
+Since this uses a fair bit of reasoning and planning, a good reasoning model helps, like o3.
+
+What happens:
+
+1. The AI reads both the requirements and design documents together with the `@plan.mdc` rule.
+2. It drafts a **backlog** of user stories that incrementally realise the feature.
+3. The AI presents the backlog to you for feedback. You can tell it to change things.
+4. After approval the AI expands each story into granular **implementation steps / prompts**
+5. The AI asks **where to save** the markdown file (or you tell it where to save it), usually under `docs/specs/`.
+
+The AI will present a high-level plan. Sometimes you realise you need to change a story. This is your chance. If you
+realise you need to change or add a story, tell it to update the design document as well.
+
+Sometimes, after switching context like that, it forgets that you are in the middle of a `@plan.mdc` session. If you
+notice that it wants to start implementing, stop the session and tell it to resume the process outlined in `@plan.mdc`.
+
+Resulting artefact: `/docs/specs/rule-placeholder-text-plan.md`
+
+---
+
+## 5. Execution session – `@execute.mdc`
+
+Command example:  `@execute.mdc @ule-placeholder-text-plan.md story 1`
+
+Use a good coding model, like Claude 4 Sonnet.
+
+What happens:
+
+1. The AI reads the implementation plan and selects the story you mentioned.
+2. It reads the story and relevant context, and makes a plan to execute it
+3. The AI tells you what it wants to do and asks for approval. **NOTE**: It sometimes forgets to ask for approval
+   and just forges ahead with implementation, which can be super annoying.
+4. Upon approval, the AI implements each step, running linting, type-checking and tests after every change.
+   Again, it sometimes forgets to do the linting/testing, sigh.
+5. It marks steps, test cases and verification criteria as completed, looping until the story is finished
+6. The cycle repeats for the remaining stories until the backlog is exhausted.
+
+Happy building!

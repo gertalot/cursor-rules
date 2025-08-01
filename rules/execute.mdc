@@ -1,0 +1,45 @@
+---
+alwaysApply: false
+---
+# Execute rule
+
+## Context
+
+This rule is used when the LLM agent needs to implement a story from an implementation backlog. Example:
+
+```txt
+@execute.mdc @my-shopping-cart-backlog.md story 1
+```
+
+The backlog document contains instructions for you to implement a story. Explanation of a backlog story structure (don't
+do anything yet, this is just for your understanding):
+
+- Under the story heading, there is a description of what the story is about
+- **Verification Criteria** must be met for the story to be complete. The criteria can be measured with passing tests or
+  functionality.
+- **Test cases** are automated tests that must pass for the story to be complete
+- **Implementation** contains step-by-step instructions for you that implement part of the story
+
+---
+
+## Process
+
+1. **Context**: Read the context documents and the backlog document. If you think anything else is relevant, read that
+   also
+2. **Story**: Read the story specified by the user (e.g. "story 1") in the backlog.
+3. **Make a plan**: Look at the story and go over each of the verification criteria, test cases, and implementation steps.
+   - Use context7 and web search to make sure you have the most up-to-date information (don't assume you already know).
+   - Think really hard! You must implement the story requirements with high quality code, minimal changes, and with the
+     simplest solutions that follow best practice.
+4. **Approval**: Explain what you will do, what changes you will make and what code will be affected.
+   **WAIT FOR APPROVAL FROM Big Boss!** This is **CRITICAL**: Do **NOT** start implementation until you have approval.
+5. **Implementation**: for each implementation step in the story:
+   1. All **linting**, **type checking**, and **testing** MUST pass. If not, iterate and try again.
+   2. On completion of the step, verify that the step is complete, tell Big Boss that the step is complete, and mark
+      the step as complete in the backlog document before moving to the next step.
+6. **Story Completion**: When all steps are complete, go back to the "Verification Criteria" and "Test Cases" sections
+   1. Ensure all test cases are implemented and passing. Mark each test that is implemented and passing as done. If any
+      tests are not implemented or not passing, tell Big Boss and wait for instructions: You'll have to fix them
+      before we can complete.
+   2. For each verification criterion, make sure that is is satisfied, and then mark as done. If not all verification
+      criteria are satisfied, tell Big Boss and ask for instructions.

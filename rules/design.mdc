@@ -1,0 +1,156 @@
+---
+alwaysApply: false
+---
+
+# Design Documentation Rule
+
+When this rule is used, interpret this as a request to create a detailed design document for the specified project,
+feature, module, system, or functionality
+
+Example use of rule: `@design.mdc /docs/specs/my-feature-requirements.md`
+
+## Process overview
+
+Read the requirements document specified and help Big Boss to craft a comprehensive technical design document that meets
+all requirements. Ask a series of questions, one at a time. Each question should build on previous answers, and our end
+goal is to have a complete technical design document that captures the big picture of how the system works, including
+its components and interactions, and the technology used.  Let’s do this iteratively and dig into every relevant detail.
+Remember, only one question at a time.
+
+Once we are done, prepare to save the full design document in a markdown document. Ask Big Boss where to save it.
+
+The output document must have the structure and content outlined below. Your goal is to get enough answers from your
+questions so the output document has all the necessary detail with full clarity and no ambiguity.
+
+Design document structure:
+
+```markdown
+# Design Document - {{TITLE}}
+
+## Description
+
+{{A description of the system you are documenting}}
+
+## Scope
+
+{{The modules, code, or subprojects we are describing}}
+
+## Tech Stack
+
+{{Describe the technical stack: languages, versions, frameworks, libraries, tools, and their versions}}
+
+---
+
+## Architecture
+
+### Components
+
+{{A mermaid diagram of the components shown as a hierarchy}}
+
+{{include the following for each component group and component:}}
+
+#### {{Component group, e.g. 'Core components', 'ORM components', 'Authentication components', etc}}
+
+##### 1. {{component name}}
+
+- **Purpose**: {{purpose of the component}}
+- **Key features**:
+  - {{key feature 1 description}}
+  - {{key feature 2 description}}
+- **State**:
+  - {{state for component, e.g. 'total count', 'offline/online', etc}}
+
+### Interfaces
+
+{{include the following for each interface:}}
+
+#### 1. {{interface name}}
+
+{{use appropriate language, e.g. typescript, yaml, python objects, REST}}
+
+\```typescript
+interface Recipe {
+  id: string;
+  timestamp: Date;
+  /* ... */
+}
+\```
+
+### Persistence Model
+
+{{describe the data model used for persistence, e.g. to the database}}
+
+{{mermaid ER diagram of the data model}}
+
+## Data Flow
+
+{{A description of how and what kind of data flows between components as a sequence of steps.}}
+
+{{A sequence diagram of the data flow between components}}
+
+## Logic
+
+{{Description of business logic for the system, if relevant - not needed for high-level overview, but useful when
+describing complex processes or algorithms. Use mermaid flow charts}}
+
+## Error handling
+
+{{Include descriptions for handling errors for each mayor tier/group of components, for example:}}
+
+### Network/API Errors
+
+- **Unreachable API failures**: 2 quick retry attempt, then switch global state to "offline" and use periodic
+  health check pings with jitter and exponential back-off to detect when the backend is online again
+- **Authentication Failures**: clear current session, show login screen with banner and start login flow
+
+### Application State Errors
+
+- **Invalid Data**: attempt sanitisation and recovery, fallback to default values, show friendly error banner if
+  everything fails
+- **Out-of-flow user interactions**: redirect to expected page/flow; show error banner if in an unrecoverable state
+
+## Testing Strategy
+
+### Unit Tests
+
+{{These are examples — tailor to the actual requirements:}}
+
+- **Data models**: Validation, serialisation, business logic
+- **Custom hooks**: side effects, state management
+
+### Integration Tests
+
+- **UX Flow**: Screen transitions and state preservation
+- **Persistence**: Data persistence and retrieval
+- **Components**: parent/child component relationships and state management
+
+### End-to-end Testing
+
+- **User flows**
+  - {{describe core user flows, e.g. 'open app → login → click review → see findings'}}
+
+### Performance Testing
+
+- **data size**: test with input document of {{N}} mb
+- **time**: Core user flows ≤ 5 seconds
+
+---
+
+## Design
+
+### Design Principles
+
+{{describe design principles, e.g. clean minimal ux, theme colours, supported devices}}
+
+### Screens
+
+{{these are examples, use sections for components actually used in the system:}}
+
+#### Main screen layout
+
+{{describe + wireframe}}
+
+#### Login component
+
+{{describe + wireframe + component parent location}}
+```

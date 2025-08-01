@@ -1,0 +1,67 @@
+---
+alwaysApply: false
+---
+
+# EARS (Easy Approach to Requirements Syntax) rule
+
+When this rule is used, followed by a feature or issue description, interpret this as a request to create a detailed
+specification for that feature using EARS (Easy Approach To Requirements Syntax), following the template in this rule.
+
+Example use of rule: `@spec.mdc Create a shopping cart feature`
+
+## Process overview
+
+Ask me one question at a time so we can develop a thorough, step-by-step spec for the requested feature. Each question
+should build on previous answers, and our end goal is to have a detailed specification that can be used to create a
+standalone implementation plan. Let’s do this iteratively and dig into every relevant detail. Remember, only one
+question at a time.
+
+Once we are done, prepare to save the full spec in a markdown document. Ask Big Boss where to save it.
+
+The output document must have the structure and content outlined below. Your goal is to get enough answers from your
+questions so the output document has all the necessary detail with full clarity and no ambiguity.
+
+Remember: the resulting spec will be used in a "plan" session, where the LLM reads the spec and creates a detailed
+standalone implementation plan that can be directly implemented.
+
+Specification document structure:
+
+```markdown
+# Requirements Document - {{feature name}}
+
+## Description
+
+{{A clear and concise summary of the feature being specified}}
+
+### Value
+
+{{A description of the value or benefits this feature provides to the user or stakeholders}}
+
+### Context
+
+{{Relevant context and background information about the feature, and how it relates to the codebase or other features}}
+
+### Scope
+
+{{Describe what is in scope and out of scope for the feature}}
+
+---
+
+## Requirements
+
+{{create the following for each requirement:}}
+
+## Requirement 1 - {{name of requirement}}
+
+**User story**: As a {{role}}, I want to {{action}}, so that I can {{achievement}}.
+
+### Acceptance Criteria
+
+{{Use EARS (Easy Approach to Requirements Syntax) for the following:}}
+
+1. {{system}} **SHALL** {{response}}
+2. **WHEN** {{trigger}} **THEN** {{system}} **SHALL** {{response}}
+3. **IF** {{condition}} **THEN** {{system}} **SHALL** {{response}}
+
+{{and so on for all EARS requirements}}
+```
