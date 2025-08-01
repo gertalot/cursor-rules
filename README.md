@@ -1,4 +1,4 @@
-# Spec-driven development for Cursos
+# Spec-driven development for Cursor
 
 A collection of Cursor rules that help you automate your software development process with AI, using spec-driven
 development. It's like vibe coding but, because you're putting an effort into planning, with much better results.
